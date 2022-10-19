@@ -11,6 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
-
-voting in global south democracies, particularly in Brazil 
+I am interested in exploring data related tovoting in global south democracies, particularly in Brazil. This topic may be subject to change; I am not fully decided. 

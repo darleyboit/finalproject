@@ -11,4 +11,10 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related tovoting in global south democracies, particularly in Brazil. This topic may be subject to change; I am not fully decided. 
+I am interested in exploring data related to identity, specifically the Hispanic/Latinx identity in the United States.This data set from the Pew Research Center analyzes how individuals with Hispanic/Latinx ancestry do or do not identify with the terms. 
+
+This is of particular interest to me as a dual citizen with Brazil (where my grandfather is from). I myself tend to identify as white -- especially if the only two options are 'white, not hispanic/latino' or 'hispanic/latino', and if there is no overlap between the two. 
+
+https://www.pewresearch.org/hispanic/dataset/2016-survey-of-self-identified-non-hispanics-with-hispanic-ancestry/
+
+

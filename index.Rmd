@@ -19,6 +19,17 @@ I would like to examine how individuals WITH HISPANIC/LATIN heritage identify ra
 
 Those with hispanic/latin heritage who identify as hispanic/latin will be considered "self identifying". Those with only ancestry of, but no racial self-identification, will be what I hope to explain through examining this dataset. 
 
+My research question is... 
+
+Individuals with hispanic and latinx heritage vary in their self identification in being hispanic and/or latinx. Does this vary across generations -- in their separation from their ancestors -- and is there variation across countries that might also influence it? 
+
+dependent variable: self-identifying as hispanic or latinx
+independent variables: degree of ancestry (were you born there, your parents, your grandparents) + country of ancestry 
+
+These are measured based on questions on a survey, all in a yes/no format, with the exception of the country of ancestry (which is a fill in the bubble with options of all hispanic/latinx countries). 
+
+Hypothesis: Those who were born in a latinx or hispanic country AND those who have 2 parents that are hispanic/latinx will identify more strongly. Those with only one parent will do so less, along with those with 2+ levels of separation. In terms of origin countries, I believe that that will only have a strong impact after 2 levels of separation. At which point, only people from countries that have a strong immigrant prescence in the US will continue to associate strongly with hispanic/latinx heritage. 
+
 https://www.pewresearch.org/hispanic/dataset/2016-survey-of-self-identified-non-hispanics-with-hispanic-ancestry/
 
 

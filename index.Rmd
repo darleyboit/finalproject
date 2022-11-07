@@ -11,6 +11,8 @@ output:
 
 ## Project thoughts
 
+---- milestone 1: 
+
 I am interested in exploring data related to identity, specifically the Hispanic/Latinx identity in the United States.This data set from the Pew Research Center analyzes how individuals with Hispanic/Latinx ancestry do or do not identify with the terms. 
 
 This is of particular interest to me as a dual citizen with Brazil (where my grandfather is from). I myself tend to identify as white -- especially if the only two options are 'white, not hispanic/latino' or 'hispanic/latino', and if there is no overlap between the two. I would generally tend to identify more with Brazil than with any Latin identity, especially as I am racially white. I think it is relatively common among Latin/Hispanic people to identify most strongly with orgin country... thus I will also take origin country into account in this study. 
@@ -18,6 +20,10 @@ This is of particular interest to me as a dual citizen with Brazil (where my gra
 I would like to examine how individuals WITH HISPANIC/LATIN heritage identify racially. I will only look at participants with some sort of hispanic/latin ancestry. I'm thinking of having three main variables: race (hispanic or latino vs. not hispanic/latino); hispanic/latin ancestry (either yes or no); and grouping of origin country. 
 
 Those with hispanic/latin heritage who identify as hispanic/latin will be considered "self identifying". Those with only ancestry of, but no racial self-identification, will be what I hope to explain through examining this dataset. 
+
+
+---- milestone 2: 
+
 
 My research question is... 
 
@@ -34,28 +40,24 @@ https://www.pewresearch.org/hispanic/dataset/2016-survey-of-self-identified-non-
 
 
 
-```{r}
-library(foreign)
-install.packages
-```
-
 
 ```{r}
-library("haven")
+library(haven)
+library(sjlabelled)
 library(tidyverse)
 library(infer)
 
-
-setwd("~/<Your File Path Here>/January 3-10, 2018 - Core Trends Survey")
-jan_core_trends_survey <- read_csv("January 3-10, 2018 - Core Trends Survey - CSV.csv")
-
-read_sav("NSL2015Omnibus_FOR_RELEASE.sav")
+pew <- read_sav("Data/Pew/NSL2015 Omnibus_FOR RELEASE.sav") |>
+  sjlabelled::as_label()
 ```
 
 
 
+- do regressions, do regressions on subsets of data too 
 
+- having descriptive statistics -- sometimes on 1 variable at a time, but usually between 2+ variables --> showing relationship on deeper level than a scatter plot (AKA regression, difference in means, etc.)
 
+- 
 
 
 

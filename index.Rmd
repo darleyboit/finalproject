@@ -49,8 +49,18 @@ library(infer)
 
 pew <- read_sav("Data/Pew/NSL2015 Omnibus_FOR RELEASE.sav") |>
   sjlabelled::as_label()
+
 ```
 
+```{r}
+number_each_country <- pew |>
+  select(q1, q3_combo) |>
+  mutate(q1 = ifelse(q1 == "No",0,1)) |>
+  count(q3_combo) 
+number_each_country
+knitr::kable(number_each_country,
+             col.names = c("Nationality", "Count"))
+```
 
 
 - do regressions, do regressions on subsets of data too 

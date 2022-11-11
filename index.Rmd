@@ -53,12 +53,12 @@ pew <- read_sav("Data/Pew/NSL2015 Omnibus_FOR RELEASE.sav") |>
 ```
 
 ```{r}
-number_each_country <- pew |>
+nationality <- pew |>
   select(q1, q3_combo) |>
   mutate(q1 = ifelse(q1 == "No",0,1)) |>
   count(q3_combo) 
 number_each_country
-knitr::kable(number_each_country,
+knitr::kable(nationality,
              col.names = c("Nationality", "Count"))
 ```
 

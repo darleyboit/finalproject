@@ -6,41 +6,22 @@ output:
   distill::distill_article:
     self_contained: false
 ---
-
-
-
 ## Project thoughts
 
 ---- milestone 1: 
-
-I am interested in exploring data related to identity, specifically the Hispanic/Latinx identity in the United States.This data set from the Pew Research Center analyzes how individuals with Hispanic/Latinx ancestry do or do not identify with the terms. 
-
-This is of particular interest to me as a dual citizen with Brazil (where my grandfather is from). I myself tend to identify as white -- especially if the only two options are 'white, not hispanic/latino' or 'hispanic/latino', and if there is no overlap between the two. I would generally tend to identify more with Brazil than with any Latin identity, especially as I am racially white. I think it is relatively common among Latin/Hispanic people to identify most strongly with orgin country... thus I will also take origin country into account in this study. 
-
-I would like to examine how individuals WITH HISPANIC/LATIN heritage identify racially. I will only look at participants with some sort of hispanic/latin ancestry. I'm thinking of having three main variables: race (hispanic or latino vs. not hispanic/latino); hispanic/latin ancestry (either yes or no); and grouping of origin country. 
-
-Those with hispanic/latin heritage who identify as hispanic/latin will be considered "self identifying". Those with only ancestry of, but no racial self-identification, will be what I hope to explain through examining this dataset. 
+I am interested in exploring data related to identity, specifically the Hispanic/Latinx identity in the United States.This data set from the Pew Research Center analyzes how individuals with Hispanic/Latinx ancestry do or do not identify with the terms. This is of particular interest to me as a dual citizen with Brazil (where my grandfather is from). I myself tend to identify as white -- especially if the only two options are 'white, not hispanic/latino' or 'hispanic/latino', and if there is no overlap between the two. I would generally tend to identify more with Brazil than with any Latin identity, especially as I am racially white. I think it is relatively common among Latin/Hispanic people to identify most strongly with orgin country... thus I will also take origin country into account in this study. I would like to examine how individuals WITH HISPANIC/LATIN heritage identify racially. I will only look at participants with some sort of hispanic/latin ancestry. I'm thinking of having three main variables: race (hispanic or latino vs. not hispanic/latino); hispanic/latin ancestry (either yes or no); and grouping of origin country. Those with hispanic/latin heritage who identify as hispanic/latin will be considered "self identifying". Those with only ancestry of, but no racial self-identification, will be what I hope to explain through examining this dataset. 
 
 
 ---- milestone 2: 
-
-
-My research question is... 
-
-Individuals with hispanic and latinx heritage vary in their self identification in being hispanic and/or latinx. Does this vary across generations -- in their separation from their ancestors -- and is there variation across countries that might also influence it? 
-
-dependent variable: self-identifying as hispanic or latinx
-independent variables: degree of ancestry (were you born there, your parents, your grandparents) + country of ancestry 
-
-These are measured based on questions on a survey, all in a yes/no format, with the exception of the country of ancestry (which is a fill in the bubble with options of all hispanic/latinx countries). 
-
-Hypothesis: Those who were born in a latinx or hispanic country AND those who have 2 parents that are hispanic/latinx will identify more strongly. Those with only one parent will do so less, along with those with 2+ levels of separation. In terms of origin countries, I believe that that will only have a strong impact after 2 levels of separation. At which point, only people from countries that have a strong immigrant prescence in the US will continue to associate strongly with hispanic/latinx heritage. 
-
+My research question is...Individuals with hispanic and latinx heritage vary in their self identification in being hispanic and/or latinx. Does this vary across generations -- in their separation from their ancestors -- and is there variation across countries that might also influence it? 
+-- dependent variable: self-identifying as hispanic or latinx
+-- independent variables: degree of ancestry (were you born there, your parents, your grandparents) + country of ancestry 
+-- These are measured based on questions on a survey, all in a yes/no format, with the exception of the country of ancestry (which is a fill in the bubble with options of all hispanic/latinx countries). 
+-- Hypothesis: Those who were born in a latinx or hispanic country AND those who have 2 parents that are hispanic/latinx will identify more strongly. Those with only one parent will do so less, along with those with 2+ levels of separation. In terms of origin countries, I believe that that will only have a strong impact after 2 levels of separation. At which point, only people from countries that have a strong immigrant prescence in the US will continue to associate strongly with hispanic/latinx heritage. 
 https://www.pewresearch.org/hispanic/dataset/2016-survey-of-self-identified-non-hispanics-with-hispanic-ancestry/
 
 
-
-
+LOADING DATA:
 ```{r}
 library(haven)
 library(sjlabelled)
@@ -50,16 +31,38 @@ library(infer)
 pew <- read_sav("Data/Pew/NSL2015 Omnibus_FOR RELEASE.sav") |>
   sjlabelled::as_label()
 
-```
-
-```{r}
 data <- pew |>
   select(q1, q3_combo, q7, q8, q7q8_combo, q11a, q11b, q11_combo, q9, q16a, q14)
 data
 ```
+```{r}
+parental_birthplace <- data |>
+  mutate(hispanic_identifying = ifelse(q1 == "Yes", 1, 0)) |>
+  select(hispanic_identifying, q7q8_combo) |>  
+  count(q7q8_combo) 
+knitr::kable(parental_birthplace,
+             col.names = c("Nationality", "Count Hispanic-Identifying"))
+```
 
+The above figure shows the number of Hispanic identifying people (with Hispanic ancestry) categorized by where their parents are from This is relevant because I intend to look at how identification with the Hispanic/Latino identity varies across American-Latinx generations. This will help me in my examination of whether or not the Hispanic/Latino identities are passed more often matrilineally or patrilineally -- or perhaps equally on both sides. 
 
 ```{r}
+data |>
+  ggplot(mapping = aes(x = q7q8_combo,y = q1)) +
+  geom_col(mapping = aes(group = q7), color = "gray70") + 
+  geom_smooth(size = 1.1, method = "loess", se = FALSE) +
+  facet_wrap("q1") +
+  labs (x = "Parent Birthplace",
+        y = "Hispanic Self-Identification",
+        title = "Hispanic Self-Identification By Parental Birthplace",
+        caption = "Source: Pew")
+```
+
+
+
+
+
+```{r = FALSE} 
 nationality <- data |>
   select(q1, q3_combo) |>
   mutate(q1 = ifelse(q1 == "No",0,1)) |>
@@ -71,19 +74,23 @@ hispanic_identifying <- data |>
   select(q1) |>
   count(q1)
 hispanic_identifying
-
-##want to count the number that are both 1 & 0 
 ```
 
 
 
 
 
-- do regressions, do regressions on subsets of data too 
 
+TO DO (SOMETHING LIKE THIS)
+-- determine the number of people with hispanic ancestry who don't self-identify (get it as a percentage)
+-- determine the number of people who do/don't self identify based on if their mom is from the US + if their dad is from the US
+-- from there you could make claims about matrilineage vs. patrilineage or perhaps there is no difference
+-- determine number of people who do/don't self identify based on which nationality they are 
+
+
+- do regressions, do regressions on subsets of data too 
 - having descriptive statistics -- sometimes on 1 variable at a time, but usually between 2+ variables --> showing relationship on deeper level than a scatter plot (AKA regression, difference in means, etc.)
 
-- 
 
 
 

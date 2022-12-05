@@ -16,9 +16,9 @@ This topic is of particular interest to me because I hold dual citizenship with 
 
 Individuals with hispanic and latinx ancestry vary noticeably in their self identification in being HL. This project will only examine how individuals with HL heritage self-identify (or do not). I will only look at participants with some sort of HL ancestry. The broader question that I aim to answer is why some individuals with HL ancestry do identify with the HL identity while others do not. 
 
-The dataset I will use in this project is from Pew Research Center, a reliable and non-partisan "fact-tank". The specific dataset polls adults with HL ancestry on a variety of questions. The  questions asked on this survey that are relevant to this final project include firstly if they self-identify as HL (with all those surveyed having some sort of HL ancestry), and also if their mother, father, grandparents (both paternal and maternal), and great grandparents have HL ancestry. The survey was administered in the United States via telephone in the winter spanning from November 2015 to February 2016.
+The data set I will use in this project is from Pew Research Center, a reliable and non-partisan "fact-tank". The specific data set polls adults with HL ancestry on a variety of questions. The  questions asked on this survey that are relevant to this final project include firstly if they self-identify as HL (with all those surveyed having some sort of HL ancestry), and also if their mother, father, grandparents (both paternal and maternal), and great grandparents have HL ancestry. The survey was administered in the United States via telephone in the winter spanning from November 2015 to February 2016.
 
-HL self-identification (or lack thereof) is my dependent -- or outcome -- variable. I will examine two independent -- or explanatory -- variables in my analysis. The first independent variable will be maternal lineage of HL ancestry vs. paternal lineage of HL ancestry. The maternal lineage will be measured based on the yes/no responses to if the individual's mother, maternal grandparents, or maternal great grandparents have HL ancestry. The paternal lineage will be measured based on the yes/no responses to if the individual's father, paternal grandparents, or paternal great grandparents have HL ancestry. The second independent variable will be the degree of ancestry (were your your parents, your grandparents, your great grandparents born in or outside of the US). These are measured based on questions on a PEW Research Center survey, all answered in a yes/no format. 
+HL self-identification (or lack thereof) is my dependent -- or outcome -- variable. I will examine two independent -- or explanatory -- variables in my analysis. The first independent variable will be maternal lineage of HL ancestry vs. paternal lineage of HL ancestry. The maternal lineage will be measured based on the yes/no responses to if the individual's mother, maternal grandparents, or maternal great grandparents have HL ancestry. The paternal lineage will be measured based on the yes/no responses to if the individual's father, paternal grandparents, or paternal great grandparents have HL ancestry. The second independent variable will be the degree of ancestry (were your your parents, your grandparents, your great grandparents born in or outside of the US and how many). These are measured based on questions on a PEW Research Center survey, all answered in a yes/no format. 
 
 I hypothesize that those who were born in a latinx or hispanic country (or have an immigrant parent) AND those who have 2 parents that are hispanic/latinx will identify more strongly. I hypothesize that stronger associations with the HL identity will be passed from foreign parents because they likely immigranted from the HL country. I hypothesize that stronger associations with the HL identity will be passed maternally because -- due to typical gender roles -- women tend to be more involved in child rearing. 
 
@@ -29,21 +29,25 @@ The data set I use in this project is also accessible here. https://www.pewresea
 Below is a plot showing the distribution of the outcome variable: 
 
 ```{r}
-library(haven)
 library(sjlabelled)
 library(tidyverse)
 library(infer)
-pew <- read_sav("Pew/NSL2015 Omnibus_FOR RELEASE.sav")|>
-  sjlabelled::as_label()
-view(pew)
+library(haven)
+pew <- read_sav("Data/Pew/NSL2015 Omnibus_FOR RELEASE.sav")
+View(pew)
 ```
 
 ```{r}
 data <- pew |>
-  select(q1, q4, q7q8_combo, q11a, q11b)
+  select(q4, q7q8_combo, q11a, q11b)
 data
 ```
+q4 -- if individual is native born or not
+q7q8 combo -- parents nativity
+q11a -- maternal grandparents nativity
+q11b -- paternal grandparents nativity
 
+*** just look at degree of ancestry --- dw abt maternal/paternal bs 
 
 *****NEED TO MAKE A PLOT OF THIS OUTCOME VARIABLE******
 
@@ -51,11 +55,12 @@ data
 ## Results 
 CODING:
 - Bivariate plot of the outcome (y-axis) and explanatory (x-axis) variable
-- Discussion of bivariate plot
+- pvalue 
 - Table of regression results
 
 WRITTEN:
 - Discussion of regression results (coefficients, substantive meaning)
+- Discussion of bivariate plot
 - Discussion of significance (p-value, substantive meaning)
 - Discussion of causality, e.g. can the findings be interpreted causally? Why or why not?
 - Discussion of confounders, e.g. what could be a confounder, how could it influence the explanatory variable, how could it influence the outcome variable, is this confounder in your dataset and controlled for in your regression model?

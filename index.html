@@ -1558,7 +1558,6 @@ Organizing the Data to Best Interpret it Later:
 </div>
 </div>
 <p>The main coefficient of interest here is the rate of smoking among Californian high school teenagers. This coefficient is what this study will examine as its outcome/dependent variable. However, this study will also examine other coefficients as discussed above. This includes the correlation between race, sex, and smoking rates, in order to better understand relationships between all involved variables.</p>
-Creating a Histogram of the Outcome Variable:
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>cigs</span> <span class='op'>|&gt;</span></span>
@@ -1572,7 +1571,6 @@ Creating a Histogram of the Outcome Variable:
 </div>
 <p>This histogram displays the outcome variable: the rate of smoking. Smoking rates are displayed along the x-axis of the chart and range from slightly above 0 to slightly above 21. This shows a wide range in the amount of smoking. The density of these smoking rates – or how common they are among the different groups of Californian teens surveyed – is displayed on the y-axis. The densities vary from 0 to nearly .20. The most “dense” or common rate of smoking is just below .20 on the y axis and located at about 13 (on the x axis), showing that it is not uncommon for 13% of any given demographic group (from this data set) to smoke – and that in about 18% of all demographic groups, 13% of those asked will smoke cigarettes.</p>
 <h2 id="results-for-race-independent-variable">Results for Race Independent Variable</h2>
-Creating a Bivariate Plot of the Outcome and Race:
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>cigs_race</span> <span class='op'>&lt;-</span> <span class='va'>cigs</span> <span class='op'>|&gt;</span></span>
@@ -1593,7 +1591,6 @@ Creating a Bivariate Plot of the Outcome and Race:
 <p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
 <p>This bar graph shows the rate of cigarette smoking on average for each race. The data points are taken from several years (2001 - 2016) and only measured on the basis of race in this chart. The x-axis displays the race in four separate columns: White, Black, Hispanic, and Asian. The y-axis shows the percentage of each group who smoke cigarettes. The y-axis averages the data provided through the years in order to measure each demographic. The bar graph shows that white teenagers tended to smoke cigarettes the most because the “White” column is tallest. This shows that – on average – the white teenagers smoked at a rate of 15%, based on the data set. The lowest column represents the Asian teenagers surveyed, who tended to smoke cigarettes at roughly a rate of 8.75%. Black teenagers smoked at the second lowest rate, at just below 10%. Hispanic teenagers smoked at the second highest rate, at about 12%. The rough difference between white teenagers (the largest smoking group) and asian teenagers (the smallest smoking group) is about 6%, which is a very noticeable difference. The difference between white teenagers and hispanic teenagers (the second biggest smoking group) is also about 3%, which is quite significant as well. This bar graph provides valuable data showing that white teenagers are noticeably the biggest smoking group.</p>
-Regression Table for the Race Variable:
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mod_race</span> <span class='op'>&lt;-</span></span>
@@ -1651,7 +1648,6 @@ Regression Table for the Race Variable:
 <p>The P-values shown in the far right of the table show the probability of getting the same results – or values that emphasize the same result to at least the same extent (or greater) – if redoing the test. A lower p-value suggests that the results are more statistically significant, and p-values tend to function on a scale from 0 to 1. Therefore, a p-value of 0, suggests that the results are statistically significant. Similarly, the 0.01 p-values also strongly suggest statistical significance. Even the 0.18 for the Hispanic group is relatively low, and shows a fair amount of statistical significance.</p>
 <p>These results on race are not strong enough to show any sort of causality, but they do show a correlation between racial groups the the likelihood of smoking. A more controlled experiment set-up for this variable would be necessary to show causality, and this more observational data often does not allow for the effective establishment of causality. That said, the results show a clear correlation, and so we can still make inferences about how race affects smoking cigarettes for teenagers. However, no certain causality may be established at this point.</p>
 <h2 id="results-for-sex-independent-variable">Results for Sex Independent Variable</h2>
-Bivariate Plot of Smoking Rate and Sex:
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>cigs_sex</span> <span class='op'>&lt;-</span> <span class='va'>cigs</span> <span class='op'>|&gt;</span></span>
@@ -1672,7 +1668,6 @@ Bivariate Plot of Smoking Rate and Sex:
 <p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
 <p>This bar graph shows the rate of cigarette smoking on average for both sexes The data points are taken from several years (2001 - 2016) and only measured on the basis of sex in this chart. The x-axis displays the race in two separate columns: Male and Female. The y-axis shows the percentage of each group who smoke cigarettes. The y-axis averages the data provided through the years (2001-2016) in order to measure each demographic. The bar graph shows that male teenagers tended to smoke cigarettes more than female teenagers. The “Male” column reaches roughly 14%. The “Female” column, on the other hand, reaches roughly 11%, suggesting about a 3% difference between teenagers on the basis of sex. This is a relatively noticeable difference that provides valuable quantitative data.</p>
-Regression Table for Sex and Smoking Rate:
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mod_sex</span> <span class='op'>&lt;-</span></span>

@@ -28,7 +28,6 @@ This research project is a cross-sectional study. This means that it is a study 
 The data set I use in this project is also accessible here. 
 https://catalog.data.gov/dataset/proportion-of-high-school-students-who-smoked-cigarettes-in-the-past-30-days-lghc-indicato-46afc
 
-Loading the Data:
 ```{r}
 library(sjlabelled)
 library(tidyverse)
@@ -38,7 +37,7 @@ library(infer)
 library(readr)
 data <- read_csv("proportion-of-high-school-students-who-smoked-cigarettes-in-the-past-30-days-lghc-indicator-13 (1).csv")
 ```
-Organizing the Data to Best Interpret it Later:
+
 ```{r}
 cigs <- data |>
   mutate(Sex = factor(`Strata Name`, levels = c("Male", "Female")),
